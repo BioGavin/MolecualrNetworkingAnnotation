@@ -14,6 +14,7 @@ from pyteomics.auxiliary.structures import Charge
 def read_mzmine_mgf(mzmine_mgf_dir):
     # 打开 mgf 文件进行解析
     indexed_mgf = mgf.read(mzmine_mgf_dir, index_by_feature_id=True)
+    print(f"Available IDs: {indexed_mgf.index.keys()}")
     return indexed_mgf
 
 

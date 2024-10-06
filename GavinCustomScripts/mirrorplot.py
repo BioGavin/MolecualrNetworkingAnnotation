@@ -29,7 +29,7 @@ def read_mgf(mgf_file):
         # print(s)
         title = s["params"]["title"]
         pepmass = s["params"]["pepmass"][0]
-        charge = int(s["params"]["charge"][0])
+        charge = int(s["params"].get("charge", [1])[0])
         mz_array = s["m/z array"]
         intensity_array = s["intensity array"]
 

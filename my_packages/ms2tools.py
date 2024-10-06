@@ -179,7 +179,7 @@ def ISDB_MS2_match(args):
     args.sim_method:
     :return:
     '''
-    with open(args.isdb_file) as f:
+    with open(os.path.expanduser(args.isdb_file)) as f:
         isdb_info = json.load(f)
 
     exp_info = functions.mgf_process(args.mgf_file)
@@ -324,7 +324,7 @@ def EDB_MS2_match(args):
     args.mgf_file:
     :return:
     '''
-    with open (args.edbms2_file,'r') as f:
+    with open (os.path.expanduser(args.edbms2_file),'r') as f:
         edbms2_info=json.load(f) # EDB_MS2 json file
 
 

@@ -87,8 +87,8 @@ MNA -h
 - common commands
 
 ```bash
-cd /path/to/workdirectory
-MNA main -q MZmine_Features_iimn_gnps_quant.csv -m MZmine_Features_iimn_gnps.mgf -o .
+cd example
+MNA main -q example_quant.csv -m example.mgf -o .
 ```
 
 
@@ -235,7 +235,17 @@ Click in sequence: **Open Cytoscape > File > Import > Styles from file...**
 
 # Gavin's Custom scripts
 
-## MNA2MirrorPlot
+## install package mannually
+
+```bash
+cp -r GavinCustomScripts/CostumeMSTool ~/miniconda3/envs/MNA/lib/python3.8/site-packages/
+```
+
+
+
+## Command Description
+
+### MNA2MirrorPlot
 
 Used for plotting all MS/MS mirror comparison plots after MNA analysis.
 
@@ -244,34 +254,54 @@ Used for plotting all MS/MS mirror comparison plots after MNA analysis.
 python3 MNA2MirrorPlot.py -h
 
 # common command
-python3 MNA2MirrorPlot.py -i LZ_quant_result -m LZ.mgf -o output
+cd example
+python3 ../GavinCustomScripts/MNA2MirrorPlot.py -i example_quant_result -m example.mgf -o MNA2MirrorPlot
 ```
 
 
 
-## get_target_spectrum_from_mgf
+### get_target_spectrum_from_mgf
 
 Retrieve target spectrum from an MGF file based on ID.
 
 ```bash
 # View help
 python3 get_target_spectrum_from_mgf.py -h
+
+# common command
+cd example
+python3 ../GavinCustomScripts/get_target_spectrum_from_mgf.py -i example.mgf -t mzmine -l scan_id.list -o target.mgf
 ```
 
 
 
-## mirrorplot
+### mirrorplot
 
 Plot MS/MS mirror comparison based on two MGF files
 
 ```bash
 # 查看帮助
 python3 mirrorplot.py -h
+
+# common command
+cd example
+python3 ../GavinCustomScripts/mirrorplot.py -i target.mgf -t mzmine -I example_quant_result/1/CCMSLIB00009992430.mgf -T ccmslib -o mirror.png
 ```
 
 
 
-## MNA1TargetMirrorPlot
+### MNA1TargetMirrorPlot
+
+```bash
+# 查看帮助
+python3 MNA1TargetMirrorPlot.py -h
+
+# common command
+cd example
+mkdir TargetMirrorPlot
+python3 ../GavinCustomScripts/MNA1TargetMirrorPlot.py -i example.mgf -f 1 -c CCMSLIB00009992430 -o TargetMirrorPlot
+python3 ../GavinCustomScripts/MNA1TargetMirrorPlot.py -i example.mgf -f 1 -I example_quant_result/1/CCMSLIB00009992430.mgf -o TargetMirrorPlot
+```
 
 
 
